@@ -32,3 +32,19 @@ project following the homework receipt found in the
 [`homework-definitions`](https://github.com/cpp-for-yourself/homework-definitions)
 project.
 
+# Using Docker
+
+Use pre-existing `ubuntu20_cpp` container
+
+```
+docker run -it --rm -v $PWD/homeworks:/root/homeworks ubuntu20_cpp bash
+```
+
+Format, build and run a program (example with homework 1)
+
+```
+cd homework_1/hello_world
+clang-format -i hello.cpp
+c++ -std=c++17 -o program hello.cpp
+./program
+```
