@@ -48,8 +48,9 @@ int main() {
   int adjectives_index = input_name.size() % adjectives.size();
   int ending_index = input_name.size() % ending.size();
 
-  fortune_telling = input_name + ", the "s + adjectives[adjectives_index] +
-                    " "s + noun.at(season) + " that "s + ending[ending_index];
+  fortune_telling = "\n"s + "Here is your description:"s + "\n"s + input_name +
+                    ", the "s + adjectives[adjectives_index] + " "s +
+                    noun.at(season) + " that "s + ending[ending_index];
 
   std::cout << fortune_telling << std::endl;
 }
