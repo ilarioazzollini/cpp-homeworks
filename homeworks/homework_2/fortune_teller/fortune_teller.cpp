@@ -22,7 +22,7 @@ int main() {
   std::cout << "Welcome to the fortune teller program!" << std::endl;
 
   std::string input_name{};
-  std::cout << "Please enter your name" << std::endl;
+  std::cout << "Please enter your name:" << std::endl;
   std::cin >> input_name;
 
   std::string season{};
