@@ -19,23 +19,22 @@ std::vector<std::string> Split(const std::string &str,
   result.emplace_back(str.substr(current_pos, n - current_pos));
 
   // Debug
-  std::cout << "current pos: " << current_pos << std::endl;
-  std::cout << "current n: " << n << std::endl;
-  std::cout << "current substring: " << str.substr(current_pos, n - current_pos)
-            << std::endl;
+  // std::cout << "current pos: " << current_pos << std::endl;
+  // std::cout << "current n: " << n << std::endl;
+  // std::cout << "current substring: " << str.substr(current_pos, n - current_pos)
+  //           << std::endl;
   // Debug
 
   while (n != std::string::npos) {
     current_pos = n + delimiter_length;
     n = str.find(delimiter, current_pos);
-    std::cout << str.substr(current_pos, current_pos - n) << std::endl;
     result.emplace_back(str.substr(current_pos, n - current_pos));
 
     // Debug
-    std::cout << "current pos: " << current_pos << std::endl;
-    std::cout << "current n: " << n << std::endl;
-    std::cout << "current substring: "
-              << str.substr(current_pos, n - current_pos) << std::endl;
+    // std::cout << "current pos: " << current_pos << std::endl;
+    // std::cout << "current n: " << n << std::endl;
+    // std::cout << "current substring: "
+    //           << str.substr(current_pos, n - current_pos) << std::endl;
     // Debug
   }
 

@@ -5,30 +5,21 @@
 #include <no_strings_attached/string_split.h>
 
 int main() {
-  std::string const input_string = "is string This is a string";
+  std::string input{};
+  std::string delimiter = " ";
+  std::vector<std::string> result{};
 
-  std::cout << "\nFirst Test" << std::endl;
-  std::string const delimiter1 = "zz";
-  std::vector<std::string> result1;
-  result1 = no_strings_attached::string_split::Split(input_string, delimiter1);
+  std::cout << "Example program that splits strings." << std::endl;
+  std::cout << "Please enter a string:" << std::endl;
+  std::getline(std::cin, input);
 
-  std::cout << "\nSecond Test" << std::endl;
-  std::string const delimiter2 = "is";
-  std::vector<std::string> result2;
-  result2 = no_strings_attached::string_split::Split(input_string, delimiter2);
+  result = no_strings_attached::string_split::Split(input, delimiter);
 
-  for (const auto &string : result2) {
-    std::cout << "'" << string << "'" << std::endl;
+  std::cout << "Your split string: ";
+  for (const auto &string : result) {
+    std::cout << "'" << string << "' ";
   }
-
-  std::cout << "\nSecond Test" << std::endl;
-  std::string const delimiter3 = "is";
-  std::vector<std::string> result3;
-  result3 = no_strings_attached::string_split::Split(input_string, delimiter3, 2);
-
-  for (const auto &string : result3) {
-    std::cout << "'" << string << "'" << std::endl;
-  }
+  std::cout << "" << std::endl;
 
   return 0;
 }

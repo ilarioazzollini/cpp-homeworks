@@ -40,5 +40,17 @@ Notice that `--test-dir build` works only with CMake 3.20+. If you have a previo
 
 ```
 root@4efc5d6cd8d2:~/homeworks/homework_4/no_strings_attached# cd build
-root@4efc5d6cd8d2:~/homeworks/homework_4/no_strings_attached/build# GTEST_COLOR=1 ctest --test-dir build --output-on-failure -j 12
+root@4efc5d6cd8d2:~/homeworks/homework_4/no_strings_attached/build# GTEST_COLOR=1 ctest --output-on-failure -j 12
+```
+
+# Run example applications (after successful build)
+
+Run `split_strings`:
+```
+root@4efc5d6cd8d2:~/homeworks/homework_4/no_strings_attached# ./build/examples/split_strings
+```
+
+Run `trim_strings`:
+```
+root@4efc5d6cd8d2:~/homeworks/homework_4/no_strings_attached# ./build/examples/trim_strings
 ```

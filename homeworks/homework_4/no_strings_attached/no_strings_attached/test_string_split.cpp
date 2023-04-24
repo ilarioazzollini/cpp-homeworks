@@ -28,4 +28,12 @@ TEST(StringSplit, SpaceDelimiter) {
     EXPECT_EQ(expected_result, result);
 }
 
+TEST(StringSplit, ApplicationTest) {
+    std::string input = "hello world";
+    std::string delimiter = " ";
+    std::vector<std::string> expected_result{"hello", "world"};
+    std::vector<std::string> result = no_strings_attached::string_split::Split(input, delimiter);
+    EXPECT_EQ(expected_result, result);
+}
+
 // EXPECT_EQ will always continue the execution of the tests while ASSERT_EQ will not (if it fails)
