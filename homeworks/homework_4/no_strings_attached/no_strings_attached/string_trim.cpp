@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 
 #include <no_strings_attached/string_trim.h>
@@ -11,6 +12,10 @@ std::string Trim(const std::string &str, char char_to_trim, Side side) {
   current_result = str;
   std::string::size_type current_length = current_result.size();
 
+  if (current_result.empty()) {
+    return current_result;
+  }
+
   switch (side) {
 
   case Side::kBoth:
@@ -20,8 +25,18 @@ std::string Trim(const std::string &str, char char_to_trim, Side side) {
   case Side::kLeft:
     while (current_result.find(char_to_trim, 0) == 0) {
       next_result = current_result.substr(1);
+
+      // // Debug
+      // std::cout << "current_result: '" << current_result << "'" << std::endl;
+      // std::cout << "next_result: '" << next_result << "'\n" << std::endl;
+      // // Debug
+
       current_result = next_result;
       current_length = current_result.size();
+
+      if (current_result.empty()) {
+        break;
+      }
     }
     if (falling_through) {
       [[fallthrough]];
@@ -33,8 +48,18 @@ std::string Trim(const std::string &str, char char_to_trim, Side side) {
   case Side::kRight:
     while (current_result.find(char_to_trim, current_length - 1) == current_length - 1) {
       next_result = current_result.substr(0, current_length - 1);
+
+      // // Debug
+      // std::cout << "current_result: '" << current_result << "'" << std::endl;
+      // std::cout << "next_result: '" << next_result << "'\n" << std::endl;
+      // // Debug
+
       current_result = next_result;
       current_length = current_result.size();
+
+      if (current_result.empty()) {
+        break;
+      }
     }
     break;
 
