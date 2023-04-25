@@ -7,7 +7,6 @@
 // https://en.cppreference.com/w/cpp/string/basic_string/find
 
 namespace no_strings_attached {
-namespace string_split {
 std::vector<std::string> Split(const std::string &str,
                                const std::string &delimiter) {
   std::vector<std::string> result;
@@ -52,5 +51,4 @@ std::vector<std::string> Split(const std::string &str,
 
   return result;
 }
-} // namespace string_split
 } // namespace no_strings_attached

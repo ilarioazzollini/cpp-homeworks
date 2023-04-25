@@ -11,7 +11,7 @@ int main() {
   std::cout << "Please enter a string:" << std::endl;
   std::getline(std::cin, input);
 
-  result = no_strings_attached::string_trim::Trim(input);
+  result = no_strings_attached::Trim(input);
 
   std::cout << "Your trimmed string: '" << result << "'" << std::endl;
 

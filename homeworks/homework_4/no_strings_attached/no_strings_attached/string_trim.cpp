@@ -3,48 +3,52 @@
 #include <no_strings_attached/string_trim.h>
 
 namespace no_strings_attached {
-namespace string_trim {
 std::string Trim(const std::string &str, char char_to_trim, Side side) {
-  std::string result{};
+  std::string result = str;
   std::string::size_type str_length = str.size();
   switch (side) {
+  case Side::kBoth:
+    if ((str.find(char_to_trim, 0) == 0) && (str.find(char_to_trim, str_length - 1) == (str_length - 1))) {
+      result = str.substr(1, str_length - 2);
+      break;
+    }
+    else {
+      [[fallthrough]];
+    }
   case Side::kLeft:
     if (str.find(char_to_trim, 0) == 0) {
       result = str.substr(1);
+      break;
     }
     else {
-      result = str;
+      [[fallthrough]];
     }
-    break;
 
   case Side::kRight:
     if (str.find(char_to_trim, str_length - 1) == str_length - 1) {
       result = str.substr(0, str_length - 1);
+      break;
     }
     else {
-      result = str;
+      [[fallthrough]];
     }
-    break;
-
-  case Side::kBoth:
-    if ((str.find(char_to_trim, 0) == 0) && (str.find(char_to_trim, str_length - 1) == (str_length - 1))) {
-      result = str.substr(1, str_length - 2);
-    }
-    else {
-      result = str;
-    }
-    break;
+    
   }
   return result;
 }
 std::string Trim(const std::string &str) {
-  std::string result{};
+  std::string previous_result{};
+  std::string current_result{};
   char char_to_trim = ' ';
-  Side side = Side::kBoth;
 
-  result = Trim(str, char_to_trim, side);
+  previous_result = str;
+  current_result = Trim(previous_result, char_to_trim, Side::kBoth);
 
-  return result;
+  while (current_result != previous_result) {
+    previous_result = current_result;
+    current_result = Trim(previous_result, char_to_trim, Side::kBoth);
+  }
+
+  return current_result;
 }
-} // namespace string_trim
 } // namespace no_strings_attached

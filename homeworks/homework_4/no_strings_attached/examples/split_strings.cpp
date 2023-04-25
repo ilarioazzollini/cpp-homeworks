@@ -13,7 +13,7 @@ int main() {
   std::cout << "Please enter a string:" << std::endl;
   std::getline(std::cin, input);
 
-  result = no_strings_attached::string_split::Split(input, delimiter);
+  result = no_strings_attached::Split(input, delimiter);
 
   std::cout << "Your split string: ";
   for (const auto &string : result) {
