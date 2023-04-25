@@ -4,51 +4,49 @@
 
 namespace no_strings_attached {
 std::string Trim(const std::string &str, char char_to_trim, Side side) {
-  std::string result = str;
-  std::string::size_type str_length = str.size();
+  std::string current_result{};
+  std::string next_result{};
+  bool falling_through = false;
+
+  current_result = str;
+  std::string::size_type current_length = current_result.size();
+
   switch (side) {
+
   case Side::kBoth:
-    if ((str.find(char_to_trim, 0) == 0) && (str.find(char_to_trim, str_length - 1) == (str_length - 1))) {
-      result = str.substr(1, str_length - 2);
-      break;
-    }
-    else {
-      [[fallthrough]];
-    }
+    falling_through = true;
+    [[fallthrough]];
+
   case Side::kLeft:
-    if (str.find(char_to_trim, 0) == 0) {
-      result = str.substr(1);
-      break;
+    while (current_result.find(char_to_trim, 0) == 0) {
+      next_result = current_result.substr(1);
+      current_result = next_result;
+      current_length = current_result.size();
+    }
+    if (falling_through) {
+      [[fallthrough]];
     }
     else {
-      [[fallthrough]];
+      break;
     }
 
   case Side::kRight:
-    if (str.find(char_to_trim, str_length - 1) == str_length - 1) {
-      result = str.substr(0, str_length - 1);
-      break;
+    while (current_result.find(char_to_trim, current_length - 1) == current_length - 1) {
+      next_result = current_result.substr(0, current_length - 1);
+      current_result = next_result;
+      current_length = current_result.size();
     }
-    else {
-      [[fallthrough]];
-    }
-    
+    break;
+
   }
-  return result;
+  return current_result;
 }
 std::string Trim(const std::string &str) {
-  std::string previous_result{};
-  std::string current_result{};
+  std::string result{};
   char char_to_trim = ' ';
 
-  previous_result = str;
-  current_result = Trim(previous_result, char_to_trim, Side::kBoth);
+  result = Trim(str, char_to_trim, Side::kBoth);
 
-  while (current_result != previous_result) {
-    previous_result = current_result;
-    current_result = Trim(previous_result, char_to_trim, Side::kBoth);
-  }
-
-  return current_result;
+  return result;
 }
 } // namespace no_strings_attached
