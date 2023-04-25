@@ -1,2 +1,5 @@
 # Binary applications
 program
+
+# Build folders
+build/
